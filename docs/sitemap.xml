@@ -19,9 +19,21 @@
     <loc>/index.html</loc>
   </url>
   <url>
+    <loc>/reference/Fun_function.html</loc>
+  </url>
+  <url>
+    <loc>/reference/create_lm.html</loc>
+  </url>
+  <url>
     <loc>/reference/index.html</loc>
   </url>
   <url>
+    <loc>/reference/info_plot.html</loc>
+  </url>
+  <url>
     <loc>/reference/order_data.html</loc>
+  </url>
+  <url>
+    <loc>/reference/remove_nas.html</loc>
   </url>
 </urlset>
