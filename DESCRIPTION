@@ -2,7 +2,7 @@ Package: mancik.pkg
 Title: Perform multiple calculations for manipulating crabs data.
 Version: 0.1
 Authors@R: c(person(given = "Shawn", family = "Mancik", role = c("cre", "aut"), email = "shawn.mancik@selu.edu"))
-Description: An R package that manipulates crabs data.
+Description: An R package that manipulates data.
 License: MIT + File LICENSE
 Depends: R(>= 2.10)
 Imports: tidyverse, broom

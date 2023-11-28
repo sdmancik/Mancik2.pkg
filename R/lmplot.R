@@ -1,8 +1,8 @@
 #' Create linear models from any data set and variables
 #' 
 #' @param data The dataset you'd like to create a linear model from
-#' @param Dependant_var
-#' @param Independant_var
+#' @param Dependant_var Whatever dependant variable you want to use
+#' @param Independant_var whatever independent variable you want to use
 #' @return Dataframe
 #' 
 #' @export
