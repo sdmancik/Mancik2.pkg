@@ -8,7 +8,7 @@ date: "2023-11-21"
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
-## An Introduction to My R Package
+## R Package Tutorial
 
 This package contains functions that help clean up NA values, organize columns for easier viewing, create linear plots using any data set you have available, and plot any linear models by combining QQ and scatter plots of residuals vs fitted values. Most of these functions have an input test, and one has an output. During this tutorial feel free to try inputting the wrong column name, independent/dependent variables for some fun error messages.
 
@@ -19,18 +19,22 @@ devtools::install_github(sdmancik/mancik2.pkg)
 ```{R warning=FALSE}
 download.file(url="https://ndownloader.figshare.com/files/2292169",
               destfile = "data/crabs.csv")
+```
 
-crabs <- read_csv("/cloud/project/data/crabs.csv")
+```{r warning=FALSE}
+crabs <- read.csv("/cloud/project/data/crabs.csv")
 ```
 
 ```{R warning=FALSE}
 download.file(url="https://ndownloader.figshare.com/files/2292169",
               destfile = "data/portal_data_joined.csv")
-
-surveys <- read.csv("/cloud/project/data/surveys.csv")
 ```
 
-```{R warning=FALSE}
+```{r warning=FALSE}
+surveys <- read.csv("/cloud/project/data/portal_data_joined.csv")
+```
+
+```{R message=FALSE, warning=FALSE}
 library(tidyverse)
 library(ggplot2)
 library(gridExtra)
