@@ -13,6 +13,6 @@ remove_nas <- function(data, column_name){
   if (sum(is.na(clean)) == 0){
     return(clean)
   } else {
-    print("NAs still present!")
+    print("Its a trap! Na's still there!")
   }
 }

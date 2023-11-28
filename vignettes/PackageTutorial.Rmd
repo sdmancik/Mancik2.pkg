@@ -14,35 +14,53 @@ This package contains functions that help clean up NA values, organize columns f
 
 In order to get the functions to work make sure you download and install the following packages.
 
+
+devtools::install_github(sdmancik/mancik2.pkg)
+
+crabs <- read_csv("/cloud/project/data/crabs.csv")
+
+surveys <- read_csv("/cloud/project/data/surveys.csv")
+
+```{R}
 library(tidyverse)
 library(ggplot2)
 library(gridExtra)
 library(dplyr)
 library(broom)
 library(jpeg)
-
-devtools::install_github(sdmancik/mancik2.pkg)
-
-surveys <- read_csv("/cloud/project/data/surveys.csv")
-
-crabs <- read_csv("/cloud/project/data/crabs.csv")
+```
 
 For the last function, "Fun function" aptly named. We will have to download a jpeg.
 
+```{R}
 url <- "https://i.imgflip.com/1n7w77.jpg?a472488"
 download.file(url, "1n7w77.jpg", mode = "wb")
+```
 
 ## Utilizing the functions
 
 There are five functions in this package and I will go over examples of each one.
 
-## Clean NAs
+## Remove NAs
 
 This function is specific to cleaning up NA values out of data sets, in specific columns. This speeds up the process instead of having to write out code every single time you want to clean up these values.
 
-The command for this function is clean_nas(data, "column") this allows you to specify whatever data set you want, as well as column.
+The command for this function is remove_nas(data, "column") this allows you to specify whatever data set you want, as well as column.
 
 For this tutorial we will be using the surveys.csv data set and for the column, weight.
+
+```{R}
+remove_nas <- function(data, column_name){
+  clean <- data %>% 
+    na.omit() %>% 
+    select(({{ column_name }})) 
+  if (sum(is.na(clean)) == 0){
+    return(clean)
+  } else {
+    print("Its a trap! Na's still there!")
+  }
+}
+```
 
 ## Augment
 
@@ -52,6 +70,19 @@ The command for this function is order_data(data, "column").
 
 For this tutorial we will be using the crabs.csv data set.
 
+```{R}
+order_data <- function(crabs, column_name) {
+  if (!column_name %in% names(crabs)) {
+    stop("These are not the columns you are looking for")
+  }
+  
+  crabs_ordered <- crabs %>%
+    arrange(across(({{column_name}})))
+  
+  return(crabs_ordered)
+}
+```
+
 ## Linear Model
 
 This function is used to create an Lm of any data set you want without having to type out the code and will be used in conjunction of the next function.
@@ -59,6 +90,21 @@ This function is used to create an Lm of any data set you want without having to
 The command for this function is create_lm(data, dependent_var, independent_var)
 
 We will be using the data set crabs, as well as the dependent variable "frontal_lobe" and independent variable "Latitude".
+
+```{R}
+create_lm <- function(data, dependent_var, independent_var) {
+  if (!dependent_var %in% names(data) || any(!independent_var %in% names(data))) {
+    stop("This is the way...but try another variable")
+  }
+  
+  fmlm <- reformulate(independent_var, response = dependent_var)
+  
+  lm_model <- lm(fmlm, data = data)
+  print(summary(lm_model))
+  
+  return(lm_model)
+}
+```
 
 ## Plot
 
@@ -68,10 +114,46 @@ The command for this function is info_plot(whatever you name your lm model) for 
 
 Now the error test for this one is specifically for whatever model you try to input. So lets say you tried to use something other than a linear model. It would then give you the error message but for this tutorial I'm not going to have you create another input model just to test it out, you can do that yourselves if you want.
 
+```{R}
+info_plot <- function(lm_model){
+  if(!inherits(lm_model, "lm")) {
+    stop("Loud Wookie sounds......Must use a Linear model....RRWWWGG!")
+  }  
+  augment_crabs <- augment(lm_model)
+  
+  qq_crabs <- ggplot(augment_crabs, aes(sample = .resid)) +
+    stat_qq() +
+    stat_qq_line() +
+    labs(title = "qq plot of residuals")
+  
+  scatter_crabs <- ggplot(augment_crabs, aes(x = .fitted, y = .resid)) +
+    geom_point() +
+    geom_hline(yintercept = 0, linetype = "dashed", color = "red") +
+    labs(title = "Residuals vs. Fitted Values", x = "Fitted Values", y = "Residuals")
+  
+  combined_plot <- grid.arrange(qq_crabs,  scatter_crabs, ncol = 2, widths = c(1,2))
+  
+  return(combined_plot)
+}
+```
+
 ## FunFunction
 
 This function is purposefully going to throw an error code just because we wanted to show that we could. This is where the jpeg you had to download comes in to play and in order to get it to work, I used the clean NAs function we started with. So now, if you input the wrong column name you will get another resulted error message instead.
 
 The command for this function is, Fun_function(data, "column") So go ahead and try that now with the wrong column name or something that doesn't exist.
+
+```{R}
+Fun_function <- function(crabs, column_name) {
+  if (!column_name %in% names(crabs)) {
+    stop(meme())
+  }
+  
+  crabs_ordered <- crabs %>%
+    arrange(across(({{column_name}})))
+  
+  return(crabs_ordered)
+}
+```
 
 That's it, thank you everyone for staying with me so far and I hope you all have a wonderful evening.
