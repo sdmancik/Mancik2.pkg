@@ -80,33 +80,94 @@
     
     
 <div class="section level2">
-<h2 id="r-markdown">R Markdown<a class="anchor" aria-label="anchor" href="#r-markdown"></a>
+<h2 id="an-introduction-to-my-r-package">An Introduction to My R Package<a class="anchor" aria-label="anchor" href="#an-introduction-to-my-r-package"></a>
 </h2>
-<p>This is an R Markdown document. Markdown is a simple formatting
-syntax for authoring HTML, PDF, and MS Word documents. For more details
-on using R Markdown see <a href="http://rmarkdown.rstudio.com" class="external-link uri">http://rmarkdown.rstudio.com</a>.</p>
-<p>When you click the <strong>Knit</strong> button a document will be
-generated that includes both content as well as the output of any
-embedded R code chunks within the document. You can embed an R code
-chunk like this:</p>
-<div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/summary.html" class="external-link">summary</a></span><span class="op">(</span><span class="va">cars</span><span class="op">)</span></span></code></pre></div>
-<pre><code><span><span class="co">##      speed           dist       </span></span>
-<span><span class="co">##  Min.   : 4.0   Min.   :  2.00  </span></span>
-<span><span class="co">##  1st Qu.:12.0   1st Qu.: 26.00  </span></span>
-<span><span class="co">##  Median :15.0   Median : 36.00  </span></span>
-<span><span class="co">##  Mean   :15.4   Mean   : 42.98  </span></span>
-<span><span class="co">##  3rd Qu.:19.0   3rd Qu.: 56.00  </span></span>
-<span><span class="co">##  Max.   :25.0   Max.   :120.00</span></span></code></pre>
+<p>This package contains functions that help clean up NA values,
+organize columns for easier viewing, create linear plots using any data
+set you have available, and plot any linear models by combining QQ and
+scatter plots of residuals vs fitted values. Most of these functions
+have an input test, and one has an output. During this tutorial feel
+free to try inputting the wrong column name, independent/dependent
+variables for some fun error messages.</p>
+<p>In order to get the functions to work make sure you download and
+install the following packages.</p>
+<p>library(tidyverse) library(ggplot2) library(gridExtra) library(dplyr)
+library(broom) library(jpeg)</p>
+<p>devtools::install_github(sdmancik/mancik2.pkg) surveys &lt;-
+read_csv(“/cloud/project/data/surveys.csv”) crabs &lt;-
+read_csv(“/cloud/project/data/crabs.csv”)</p>
+<p>For the last function, “Fun function” aptly named. We will have to
+download a jpeg.</p>
+<p>url &lt;- “<a href="https://i.imgflip.com/1n7w77.jpg?a472488" class="external-link uri">https://i.imgflip.com/1n7w77.jpg?a472488</a>”
+download.file(url, “1n7w77.jpg”, mode = “wb”)</p>
 </div>
 <div class="section level2">
-<h2 id="including-plots">Including Plots<a class="anchor" aria-label="anchor" href="#including-plots"></a>
+<h2 id="utilizing-the-functions">Utilizing the functions<a class="anchor" aria-label="anchor" href="#utilizing-the-functions"></a>
 </h2>
-<p>You can also embed plots, for example:</p>
-<p><img src="PackageTutorial_files/figure-html/pressure-1.png" width="700"></p>
-<p>Note that the <code>echo = FALSE</code> parameter was added to the
-code chunk to prevent printing of the R code that generated the
-plot.</p>
+<p>There are five functions in this package and I will go over examples
+of each one.</p>
+</div>
+<div class="section level2">
+<h2 id="clean-nas">Clean NAs<a class="anchor" aria-label="anchor" href="#clean-nas"></a>
+</h2>
+<p>This function is specific to cleaning up NA values out of data sets,
+in specific columns. This speeds up the process instead of having to
+write out code every single time you want to clean up these values.</p>
+<p>The command for this function is clean_nas(data, “column”) this
+allows you to specify whatever data set you want, as well as column.</p>
+<p>For this tutorial we will be using the surveys.csv data set and for
+the column, weight.</p>
+</div>
+<div class="section level2">
+<h2 id="augment">Augment<a class="anchor" aria-label="anchor" href="#augment"></a>
+</h2>
+<p>This function is used to re-order columns of a data set from low to
+high values descending. This can be usefull if you want to clean up some
+data to look more organized.</p>
+<p>The command for this function is order_data(data, “column”).</p>
+<p>For this tutorial we will be using the crabs.csv data set.</p>
+</div>
+<div class="section level2">
+<h2 id="linear-model">Linear Model<a class="anchor" aria-label="anchor" href="#linear-model"></a>
+</h2>
+<p>This function is used to create an Lm of any data set you want
+without having to type out the code and will be used in conjunction of
+the next function.</p>
+<p>The command for this function is create_lm(data, dependent_var,
+independent_var)</p>
+<p>We will be using the data set crabs, as well as the dependent
+variable “frontal_lobe” and independent variable “Latitude”.</p>
+</div>
+<div class="section level2">
+<h2 id="plot">Plot<a class="anchor" aria-label="anchor" href="#plot"></a>
+</h2>
+<p>This function will take any linear model that has been created and
+now combine two graphs into one to show the residual and fitted values.
+You could even take it a step further and add more graphs for other
+data, but I just wanted to show it was possible so I kept it to two for
+now.</p>
+<p>The command for this function is info_plot(whatever you name your lm
+model) for this tutorial lets use the Lm in the last function for
+this.</p>
+<p>Now the error test for this one is specifically for whatever model
+you try to input. So lets say you tried to use something other than a
+linear model. It would then give you the error message but for this
+tutorial I’m not going to have you create another input model just to
+test it out, you can do that yourselves if you want.</p>
+</div>
+<div class="section level2">
+<h2 id="funfunction">FunFunction<a class="anchor" aria-label="anchor" href="#funfunction"></a>
+</h2>
+<p>This function is purposefully going to throw an error code just
+because we wanted to show that we could. This is where the jpeg you had
+to download comes in to play and in order to get it to work, I used the
+clean NAs function we started with. So now, if you input the wrong
+column name you will get another resulted error message instead.</p>
+<p>The command for this function is, Fun_function(data, “column”) So go
+ahead and try that now with the wrong column name or something that
+doesn’t exist.</p>
+<p>That’s it, thank you everyone for staying with me so far and I hope
+you all have a wonderful evening.</p>
 </div>
   </div>
 

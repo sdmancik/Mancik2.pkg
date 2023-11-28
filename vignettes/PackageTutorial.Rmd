@@ -14,25 +14,23 @@ This package contains functions that help clean up NA values, organize columns f
 
 In order to get the functions to work make sure you download and install the following packages.
 
-```{r}
-devtools::install_github(sdmancik/mancik2.pkg)
-surveys <- read_csv("/cloud/project/data/surveys.csv")
-crabs <- read_csv("/cloud/project/data/crabs.csv")
-
 library(tidyverse)
 library(ggplot2)
 library(gridExtra)
 library(dplyr)
 library(broom)
 library(jpeg)
-```
+
+devtools::install_github(sdmancik/mancik2.pkg)
+
+surveys <- read_csv("/cloud/project/data/surveys.csv")
+
+crabs <- read_csv("/cloud/project/data/crabs.csv")
 
 For the last function, "Fun function" aptly named. We will have to download a jpeg.
 
-```{r}
 url <- "https://i.imgflip.com/1n7w77.jpg?a472488"
 download.file(url, "1n7w77.jpg", mode = "wb")
-```
 
 ## Utilizing the functions
 
