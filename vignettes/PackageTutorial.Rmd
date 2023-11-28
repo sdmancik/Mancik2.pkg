@@ -14,12 +14,19 @@ This package contains functions that help clean up NA values, organize columns f
 
 In order to get the functions to work make sure you download and install the following packages.
 
-
 devtools::install_github(sdmancik/mancik2.pkg)
 
+```{R}
+download.file(url="https://ndownloader.figshare.com/files/2292169",
+              destfile = "data/crabs.csv")
+```
 crabs <- read_csv("/cloud/project/data/crabs.csv")
 
-surveys <- read_csv("/cloud/project/data/surveys.csv")
+```{R}
+download.file(url="https://ndownloader.figshare.com/files/2292169",
+              destfile = "data/portal_data_joined.csv")
+```
+surveys <- read.csv("/cloud/project/data/surveys.csv")
 
 ```{R}
 library(tidyverse)
@@ -139,9 +146,17 @@ info_plot <- function(lm_model){
 
 ## FunFunction
 
-This function is purposefully going to throw an error code just because we wanted to show that we could. This is where the jpeg you had to download comes in to play and in order to get it to work, I used the clean NAs function we started with. So now, if you input the wrong column name you will get another resulted error message instead.
+This function is purposefully going to throw an error code just because we wanted to show that we could. This is where the jpeg you had to download comes in to play and takes two parts to get it to work. First we have to attach the image to a variable we can use on a plot and name it "meme". This is because Rstudio doesn't have a function to display images alone. Secondly I used the clean NAs function we started with but now using "meme" as the stop result. So now, if you input the wrong column name you will get another error message instead.
 
-The command for this function is, Fun_function(data, "column") So go ahead and try that now with the wrong column name or something that doesn't exist.
+```{R}
+meme <- function (img) { 
++      library(jpeg)
++       img <- readJPEG("1n7w77.jpg")
++       plot(1, type = "n", xlim = c(0, 10), ylim = c(0, 10))
++       rasterImage(img, 0, 0, 10, 10)
+}
+```
+
 
 ```{R}
 Fun_function <- function(crabs, column_name) {
@@ -155,5 +170,7 @@ Fun_function <- function(crabs, column_name) {
   return(crabs_ordered)
 }
 ```
+
+The command for this function is, Fun_function(data, "column") So go ahead and try that now with crabs and the wrong column name or something that doesn't exist.
 
 That's it, thank you everyone for staying with me so far and I hope you all have a wonderful evening.
