@@ -92,9 +92,29 @@ variables for some fun error messages.</p>
 <p>In order to get the functions to work make sure you download and
 install the following packages.</p>
 <p>devtools::install_github(sdmancik/mancik2.pkg)</p>
-<p>crabs &lt;- read_csv(“/cloud/project/data/crabs.csv”)</p>
-<p>surveys &lt;- read_csv(“/cloud/project/data/surveys.csv”)</p>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/download.file.html" class="external-link">download.file</a></span><span class="op">(</span>url<span class="op">=</span><span class="st">"https://ndownloader.figshare.com/files/2292169"</span>,</span>
+<span>              destfile <span class="op">=</span> <span class="st">"data/crabs.csv"</span><span class="op">)</span></span></code></pre></div>
+<pre><code><span><span class="co">## Warning in download.file(url =</span></span>
+<span><span class="co">## "https://ndownloader.figshare.com/files/2292169", : URL</span></span>
+<span><span class="co">## https://ndownloader.figshare.com/files/2292169: cannot open destfile</span></span>
+<span><span class="co">## 'data/crabs.csv', reason 'No such file or directory'</span></span></code></pre>
+<pre><code><span><span class="co">## Warning in download.file(url =</span></span>
+<span><span class="co">## "https://ndownloader.figshare.com/files/2292169", : download had nonzero exit</span></span>
+<span><span class="co">## status</span></span></code></pre>
+<p>crabs &lt;- read_csv(“/cloud/project/data/crabs.csv”)</p>
+<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/download.file.html" class="external-link">download.file</a></span><span class="op">(</span>url<span class="op">=</span><span class="st">"https://ndownloader.figshare.com/files/2292169"</span>,</span>
+<span>              destfile <span class="op">=</span> <span class="st">"data/portal_data_joined.csv"</span><span class="op">)</span></span></code></pre></div>
+<pre><code><span><span class="co">## Warning in download.file(url =</span></span>
+<span><span class="co">## "https://ndownloader.figshare.com/files/2292169", : URL</span></span>
+<span><span class="co">## https://ndownloader.figshare.com/files/2292169: cannot open destfile</span></span>
+<span><span class="co">## 'data/portal_data_joined.csv', reason 'No such file or directory'</span></span></code></pre>
+<pre><code><span><span class="co">## Warning in download.file(url =</span></span>
+<span><span class="co">## "https://ndownloader.figshare.com/files/2292169", : download had nonzero exit</span></span>
+<span><span class="co">## status</span></span></code></pre>
+<p>surveys &lt;- read.csv(“/cloud/project/data/surveys.csv”)</p>
+<div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://tidyverse.tidyverse.org" class="external-link">tidyverse</a></span><span class="op">)</span></span></code></pre></div>
 <pre><code><span><span class="co">## ── <span style="font-weight: bold;">Attaching core tidyverse packages</span> ──────────────────────── tidyverse 2.0.0 ──</span></span>
 <span><span class="co">## <span style="color: #00BB00;">✔</span> <span style="color: #0000BB;">dplyr    </span> 1.1.4     <span style="color: #00BB00;">✔</span> <span style="color: #0000BB;">readr    </span> 2.1.4</span></span>
@@ -106,7 +126,7 @@ install the following packages.</p>
 <span><span class="co">## <span style="color: #BB0000;">✖</span> <span style="color: #0000BB;">dplyr</span>::<span style="color: #00BB00;">filter()</span> masks <span style="color: #0000BB;">stats</span>::filter()</span></span>
 <span><span class="co">## <span style="color: #BB0000;">✖</span> <span style="color: #0000BB;">dplyr</span>::<span style="color: #00BB00;">lag()</span>    masks <span style="color: #0000BB;">stats</span>::lag()</span></span>
 <span><span class="co">## <span style="color: #00BBBB;">ℹ</span> Use the conflicted package (<span style="color: #0000BB; font-style: italic;">&lt;http://conflicted.r-lib.org/&gt;</span>) to force all conflicts to become errors</span></span></code></pre>
-<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://ggplot2.tidyverse.org" class="external-link">ggplot2</a></span><span class="op">)</span></span>
 <span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va">gridExtra</span><span class="op">)</span></span></code></pre></div>
 <pre><code><span><span class="co">## </span></span>
@@ -115,13 +135,13 @@ install the following packages.</p>
 <span><span class="co">## The following object is masked from 'package:dplyr':</span></span>
 <span><span class="co">## </span></span>
 <span><span class="co">##     combine</span></span></code></pre>
-<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb11"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://dplyr.tidyverse.org" class="external-link">dplyr</a></span><span class="op">)</span></span>
 <span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://broom.tidymodels.org/" class="external-link">broom</a></span><span class="op">)</span></span>
 <span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://www.rforge.net/jpeg/" class="external-link">jpeg</a></span><span class="op">)</span></span></code></pre></div>
 <p>For the last function, “Fun function” aptly named. We will have to
 download a jpeg.</p>
-<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb12"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">url</span> <span class="op">&lt;-</span> <span class="st">"https://i.imgflip.com/1n7w77.jpg?a472488"</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/utils/download.file.html" class="external-link">download.file</a></span><span class="op">(</span><span class="va">url</span>, <span class="st">"1n7w77.jpg"</span>, mode <span class="op">=</span> <span class="st">"wb"</span><span class="op">)</span></span></code></pre></div>
 </div>
@@ -141,7 +161,7 @@ write out code every single time you want to clean up these values.</p>
 allows you to specify whatever data set you want, as well as column.</p>
 <p>For this tutorial we will be using the surveys.csv data set and for
 the column, weight.</p>
-<div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb13"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">remove_nas</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">data</span>, <span class="va">column_name</span><span class="op">)</span><span class="op">{</span></span>
 <span>  <span class="va">clean</span> <span class="op">&lt;-</span> <span class="va">data</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> </span>
 <span>    <span class="fu"><a href="https://rdrr.io/r/stats/na.fail.html" class="external-link">na.omit</a></span><span class="op">(</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> </span>
@@ -161,7 +181,7 @@ high values descending. This can be usefull if you want to clean up some
 data to look more organized.</p>
 <p>The command for this function is order_data(data, “column”).</p>
 <p>For this tutorial we will be using the crabs.csv data set.</p>
-<div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb14"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">order_data</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">crabs</span>, <span class="va">column_name</span><span class="op">)</span> <span class="op">{</span></span>
 <span>  <span class="kw">if</span> <span class="op">(</span><span class="op">!</span><span class="va">column_name</span> <span class="op"><a href="https://rdrr.io/r/base/match.html" class="external-link">%in%</a></span> <span class="fu"><a href="https://rdrr.io/r/base/names.html" class="external-link">names</a></span><span class="op">(</span><span class="va">crabs</span><span class="op">)</span><span class="op">)</span> <span class="op">{</span></span>
 <span>    <span class="kw"><a href="https://rdrr.io/r/base/stop.html" class="external-link">stop</a></span><span class="op">(</span><span class="st">"These are not the columns you are looking for"</span><span class="op">)</span></span>
@@ -183,7 +203,7 @@ the next function.</p>
 independent_var)</p>
 <p>We will be using the data set crabs, as well as the dependent
 variable “frontal_lobe” and independent variable “Latitude”.</p>
-<div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb15"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">create_lm</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">data</span>, <span class="va">dependent_var</span>, <span class="va">independent_var</span><span class="op">)</span> <span class="op">{</span></span>
 <span>  <span class="kw">if</span> <span class="op">(</span><span class="op">!</span><span class="va">dependent_var</span> <span class="op"><a href="https://rdrr.io/r/base/match.html" class="external-link">%in%</a></span> <span class="fu"><a href="https://rdrr.io/r/base/names.html" class="external-link">names</a></span><span class="op">(</span><span class="va">data</span><span class="op">)</span> <span class="op">||</span> <span class="fu"><a href="https://rdrr.io/r/base/any.html" class="external-link">any</a></span><span class="op">(</span><span class="op">!</span><span class="va">independent_var</span> <span class="op"><a href="https://rdrr.io/r/base/match.html" class="external-link">%in%</a></span> <span class="fu"><a href="https://rdrr.io/r/base/names.html" class="external-link">names</a></span><span class="op">(</span><span class="va">data</span><span class="op">)</span><span class="op">)</span><span class="op">)</span> <span class="op">{</span></span>
 <span>    <span class="kw"><a href="https://rdrr.io/r/base/stop.html" class="external-link">stop</a></span><span class="op">(</span><span class="st">"This is the way...but try another variable"</span><span class="op">)</span></span>
@@ -213,7 +233,7 @@ you try to input. So lets say you tried to use something other than a
 linear model. It would then give you the error message but for this
 tutorial I’m not going to have you create another input model just to
 test it out, you can do that yourselves if you want.</p>
-<div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb16"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">info_plot</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">lm_model</span><span class="op">)</span><span class="op">{</span></span>
 <span>  <span class="kw">if</span><span class="op">(</span><span class="op">!</span><span class="fu"><a href="https://rdrr.io/r/base/class.html" class="external-link">inherits</a></span><span class="op">(</span><span class="va">lm_model</span>, <span class="st">"lm"</span><span class="op">)</span><span class="op">)</span> <span class="op">{</span></span>
 <span>    <span class="kw"><a href="https://rdrr.io/r/base/stop.html" class="external-link">stop</a></span><span class="op">(</span><span class="st">"Loud Wookie sounds......Must use a Linear model....RRWWWGG!"</span><span class="op">)</span></span>
@@ -240,13 +260,20 @@ test it out, you can do that yourselves if you want.</p>
 </h2>
 <p>This function is purposefully going to throw an error code just
 because we wanted to show that we could. This is where the jpeg you had
-to download comes in to play and in order to get it to work, I used the
-clean NAs function we started with. So now, if you input the wrong
-column name you will get another resulted error message instead.</p>
-<p>The command for this function is, Fun_function(data, “column”) So go
-ahead and try that now with the wrong column name or something that
-doesn’t exist.</p>
-<div class="sourceCode" id="cb11"><pre class="downlit sourceCode r">
+to download comes in to play and takes two parts to get it to work.
+First we have to attach the image to a variable we can use on a plot and
+name it “meme”. This is because Rstudio doesn’t have a function to
+display images alone. Secondly I used the clean NAs function we started
+with but now using “meme” as the stop result. So now, if you input the
+wrong column name you will get another error message instead.</p>
+<div class="sourceCode" id="cb17"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">meme</span> <span class="op">&lt;-</span> <span class="kw">function</span> <span class="op">(</span><span class="va">img</span><span class="op">)</span> <span class="op">{</span> </span>
+<span><span class="op">+</span>      <span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://www.rforge.net/jpeg/" class="external-link">jpeg</a></span><span class="op">)</span></span>
+<span><span class="op">+</span>       <span class="va">img</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/jpeg/man/readJPEG.html" class="external-link">readJPEG</a></span><span class="op">(</span><span class="st">"1n7w77.jpg"</span><span class="op">)</span></span>
+<span><span class="op">+</span>       <span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="fl">1</span>, type <span class="op">=</span> <span class="st">"n"</span>, xlim <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">0</span>, <span class="fl">10</span><span class="op">)</span>, ylim <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">0</span>, <span class="fl">10</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="op">+</span>       <span class="fu"><a href="https://rdrr.io/r/graphics/rasterImage.html" class="external-link">rasterImage</a></span><span class="op">(</span><span class="va">img</span>, <span class="fl">0</span>, <span class="fl">0</span>, <span class="fl">10</span>, <span class="fl">10</span><span class="op">)</span></span>
+<span><span class="op">}</span></span></code></pre></div>
+<div class="sourceCode" id="cb18"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">Fun_function</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">crabs</span>, <span class="va">column_name</span><span class="op">)</span> <span class="op">{</span></span>
 <span>  <span class="kw">if</span> <span class="op">(</span><span class="op">!</span><span class="va">column_name</span> <span class="op"><a href="https://rdrr.io/r/base/match.html" class="external-link">%in%</a></span> <span class="fu"><a href="https://rdrr.io/r/base/names.html" class="external-link">names</a></span><span class="op">(</span><span class="va">crabs</span><span class="op">)</span><span class="op">)</span> <span class="op">{</span></span>
 <span>    <span class="kw"><a href="https://rdrr.io/r/base/stop.html" class="external-link">stop</a></span><span class="op">(</span><span class="fu">meme</span><span class="op">(</span><span class="op">)</span><span class="op">)</span></span>
@@ -257,6 +284,9 @@ doesn’t exist.</p>
 <span>  </span>
 <span>  <span class="kw"><a href="https://rdrr.io/r/base/function.html" class="external-link">return</a></span><span class="op">(</span><span class="va">crabs_ordered</span><span class="op">)</span></span>
 <span><span class="op">}</span></span></code></pre></div>
+<p>The command for this function is, Fun_function(data, “column”) So go
+ahead and try that now with crabs and the wrong column name or something
+that doesn’t exist.</p>
 <p>That’s it, thank you everyone for staying with me so far and I hope
 you all have a wonderful evening.</p>
 </div>
