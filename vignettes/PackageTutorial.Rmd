@@ -19,14 +19,16 @@ devtools::install_github(sdmancik/mancik2.pkg)
 ```{R warning=FALSE}
 download.file(url="https://ndownloader.figshare.com/files/2292169",
               destfile = "data/crabs.csv")
-```
+
 crabs <- read_csv("/cloud/project/data/crabs.csv")
+```
 
 ```{R warning=FALSE}
 download.file(url="https://ndownloader.figshare.com/files/2292169",
               destfile = "data/portal_data_joined.csv")
-```
+
 surveys <- read.csv("/cloud/project/data/surveys.csv")
+```
 
 ```{R warning=FALSE}
 library(tidyverse)
