@@ -75,6 +75,14 @@ remove_nas <- function(data, column_name){
 }
 ```
 
+
+
+```{undefined eval=FALSE, include=FALSE}
+
+remove_nas(surveys, "weight")
+
+```
+
 ## Augment
 
 This function is used to re-order columns of a data set from low to high values descending. This can be usefull if you want to clean up some data to look more organized.
@@ -94,6 +102,10 @@ order_data <- function(crabs, column_name) {
   
   return(crabs_ordered)
 }
+```
+
+```{r}
+order_data(crabs, "Latitude")
 ```
 
 ## Linear Model
@@ -117,6 +129,10 @@ create_lm <- function(data, dependent_var, independent_var) {
   
   return(lm_model)
 }
+```
+
+```{r}
+create_lm(crabs, "frontal_lobe", "Latitude")
 ```
 
 ## Plot
@@ -150,6 +166,10 @@ info_plot <- function(lm_model){
 }
 ```
 
+```{r}
+info_plot(lm_model)
+```
+
 ## FunFunction
 
 This function is purposefully going to throw an error code just because we wanted to show that we could. This is where the jpeg you had to download comes in to play and takes two parts to get it to work. First we have to attach the image to a variable we can use on a plot and name it "meme". This is because Rstudio doesn't have a function to display images alone. Secondly I used the clean NAs function we started with but now using "meme" as the stop result. So now, if you input the wrong column name you will get another error message instead.
@@ -176,6 +196,11 @@ Fun_function <- function(crabs, column_name) {
   return(crabs_ordered)
 }
 ```
+
+```{r}
+Fun_function(surveys, "models")
+```
+
 
 The command for this function is, Fun_function(data, "column") So go ahead and try that now with crabs and the wrong column name or something that doesn't exist.
 
