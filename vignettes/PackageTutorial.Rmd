@@ -189,6 +189,10 @@ info_plot(model_fit)
 
 This function is purposefully going to throw an error code just because we wanted to show that we could. This is where the jpeg you had to download comes in to play and takes two parts to get it to work. First we have to attach the image to a variable we can use on a plot and name it "meme". This is because Rstudio doesn't have a function to display images alone. Secondly I used the clean NAs function we started with but now using "meme" as the stop result. So now, if you input the wrong column name you will get another error message instead.
 
+```{r}
+img <- readJPEG("1n7w77.jpg")
+```
+
 ```{R warning=FALSE}
 meme <- function (img) { 
 +      library(jpeg)
