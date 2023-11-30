@@ -175,7 +175,7 @@ info_plot <- function(lm_model){
     geom_hline(yintercept = 0, linetype = "dashed", color = "red") +
     labs(title = "Residuals vs. Fitted Values", x = "Fitted Values", y = "Residuals")
   
-  combined_plot <- grid.arrange(qq_crabs,  scatter_crabs, ncol = 2, widths = c(1,2))
+  combined_plot <- grid.arrange(qq_crabs,  scatter_crabs, ncol = 2, widths = c(1,1))
   
   return(combined_plot)
 }
