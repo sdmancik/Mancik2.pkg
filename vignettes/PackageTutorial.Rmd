@@ -17,6 +17,7 @@ In order to get the functions to work make sure you download and install the fol
 ```{r message=FALSE, warning=FALSE}
 devtools::install_github("sdmancik/mancik2.pkg")
 ```
+
 ```{r}
 library(mancik.pkg)
 ```
