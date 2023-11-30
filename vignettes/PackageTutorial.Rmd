@@ -14,7 +14,12 @@ This package contains functions that help clean up NA values, organize columns f
 
 In order to get the functions to work make sure you download and install the following packages.
 
-devtools::install_github(sdmancik/mancik2.pkg)
+```{r message=FALSE, warning=FALSE}
+devtools::install_github("sdmancik/mancik2.pkg")
+```
+```{r}
+library(mancik.pkg)
+```
 
 ```{R warning=FALSE}
 download.file(url="https://ndownloader.figshare.com/files/2292169",
@@ -77,9 +82,10 @@ remove_nas <- function(data, column_name){
 
 
 
-```{undefined eval=FALSE, include=FALSE}
+```{r}
 
-remove_nas(surveys, "weight")
+remove_nas(surveys, "weight") %>% 
+  head(10)
 
 ```
 
@@ -105,7 +111,9 @@ order_data <- function(crabs, column_name) {
 ```
 
 ```{r}
-order_data(crabs, "Latitude")
+order_data(crabs, "Latitude") %>% 
+  select("Latitude") %>% 
+  head(10)
 ```
 
 ## Linear Model
@@ -133,6 +141,12 @@ create_lm <- function(data, dependent_var, independent_var) {
 
 ```{r}
 create_lm(crabs, "frontal_lobe", "Latitude")
+```
+
+Now for the next function lets go ahead and save the linear model we just made.
+
+```{r message=FALSE, warning=FALSE}
+model_fit <- create_lm(crabs, "frontal_lobe", "Latitude")
 ```
 
 ## Plot
@@ -166,8 +180,8 @@ info_plot <- function(lm_model){
 }
 ```
 
-```{r}
-info_plot(lm_model)
+```{r message=FALSE}
+info_plot(model_fit)
 ```
 
 ## FunFunction
@@ -197,7 +211,7 @@ Fun_function <- function(crabs, column_name) {
 }
 ```
 
-```{r}
+```{r eval=FALSE, include=FALSE}
 Fun_function(surveys, "models")
 ```
 
